@@ -1,0 +1,21 @@
+# Polygon
+
+**TODO: Add description**
+
+## Installation
+
+If [available in Hex](https://hex.pm/docs/publish), the package can be installed
+by adding `polygon` to your list of dependencies in `mix.exs`:
+
+```elixir
+def deps do
+  [
+    {:polygon, "~> 0.1.0"}
+  ]
+end
+```
+
+Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
+and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
+be found at [https://hexdocs.pm/polygon](https://hexdocs.pm/polygon).
+
