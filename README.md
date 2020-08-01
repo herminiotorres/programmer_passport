@@ -30,9 +30,9 @@ Ideas Shaping Computing
 1. Crystal
 2. Pony
 3. Prolog
-4. Elixir
-5. OTP
-6. LiveView
+4. Elixir - (The Elixir Version 1.10.4-otp-22)
+5. OTP - (The Elixir Version 1.10.4-otp-22)
+6. LiveView - (The Elixir Version 1.10.4-otp-22 | The Phoenix Version 1.5.3)
 
 #### Languages and Schedule, 2020-2021 Edition
 Machine Learning and Elixir Core Technologies
