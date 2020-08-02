@@ -1,18 +1,24 @@
 defmodule SuperDuper do
-  @moduledoc """
-  Documentation for `SuperDuper`.
-  """
+  alias SuperDuper.Server
+  # @app __MODULE__.Supervisor
+  @app __MODULE__.DynamicSupervisor
 
-  @doc """
-  Hello world.
+  def add_character(character, says) do
+    # Supervisor.start_child(@app, Server.child_spec({character, says}))
+    DynamicSupervisor.start_child(@app, Server.child_spec({character, says}))
+  end
 
-  ## Examples
+  def remove_character(character) do
+    # Supervisor.terminate_child(@app, character)
+    # Supervisor.delete_child(@app, character)
+    DynamicSupervisor.terminate_child(@app, GenServer.whereis(character))
+  end
 
-      iex> SuperDuper.hello()
-      :world
+  def say(character) do
+    Server.say(character)
+  end
 
-  """
-  def hello do
-    :world
+  def die(character) do
+    Server.die(character)
   end
 end

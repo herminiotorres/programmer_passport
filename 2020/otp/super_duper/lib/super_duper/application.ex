@@ -17,12 +17,17 @@ defmodule SuperDuper.Application do
       # %{id: :supermario, start: {Server, :start_link, [:supermario]}}
       {Server, :superdave},
       {Server, :superman},
-      {Server, :supermario}
+      {Server, :supermario},
+      {
+        DynamicSupervisor,
+        name: SuperDuper.DynamicSupervisor,
+        strategy: :one_for_one
+      }
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_all, name: SuperDuper.Supervisor]
+    opts = [strategy: :one_for_one, name: SuperDuper.Supervisor]
     Supervisor.start_link(children, opts)
   end
 end
