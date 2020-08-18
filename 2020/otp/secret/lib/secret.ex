@@ -6,6 +6,10 @@ defmodule Secret do
     GenServer.start_link(__MODULE__, agent_name, name: name)
   end
 
+  def add_agent(agent_name) do
+    DynamicSupervisor.start_child(__MODULE__.DynamicSupervisor, {__MODULE__, agent_name})
+  end
+
   def echo(server, text) do
     GenServer.call(via(server), {:echo, text})
   end
@@ -18,7 +22,14 @@ defmodule Secret do
     {:reply, "#{name} says: #{text}", name}
   end
 
-  defp via(name) do
+  def via(name) do
     {:via, Registry, {Secret.Registry, name}}
+  end
+
+  def child_spec(agent_name) do
+    %{
+      id: {:via, Registry, {__MODULE__.Registry, agent_name}},
+      start: {__MODULE__, :start_link, [agent_name]}
+    }
   end
 end

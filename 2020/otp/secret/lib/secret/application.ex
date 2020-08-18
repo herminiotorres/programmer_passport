@@ -7,8 +7,7 @@ defmodule Secret.Application do
 
   def start(_type, _args) do
     children = [
-      # Starts a worker by calling: Secret.Worker.start_link(arg)
-      # {Secret.Worker, arg}
+      {DynamicSupervisor, strategy: :one_for_one, name: Secret.DynamicSupervisor},
       {Registry, [keys: :unique, name: Secret.Registry]}
     ]
 
