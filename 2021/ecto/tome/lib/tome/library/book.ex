@@ -18,4 +18,11 @@ defmodule Tome.Library.Book do
     |> validate_required([:title, :isbn, :status])
     |> validate_inclusion(:status, ~w(working published beta retired))
   end
+
+  def to_json(%__MODULE__{} = struct) do
+    struct
+    |> Map.from_struct()
+    |> Map.drop([:__meta__, :id])
+    |> Jason.encode!()
+  end
 end

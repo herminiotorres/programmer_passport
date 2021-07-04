@@ -24,7 +24,8 @@ defmodule Tome.MixProject do
   defp deps do
     [
       {:ecto_sql, "~> 3.6"},
-      {:postgrex, ">= 0.0.0"}
+      {:postgrex, ">= 0.0.0"},
+      {:jason, "~> 1.2"}
     ]
   end
 
